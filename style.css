@@ -1,43 +1,207 @@
+/* Boutons-cadres pour les thèmes */
+.theme-btn {
+    display: inline-block;
+    min-width: 120px;
+    padding: 1em 1.2em;
+    border-radius: 14px;
+    box-shadow: 0 2px 8px #3498db22;
+    margin-bottom: 0.5em;
+    cursor: pointer;
+    background: #3498db;
+    color: #fff;
+    font-weight: bold;
+    text-align: center;
+    transition: background 0.2s, color 0.2s;
+    border: 3px solid #3498db;
+}
+.theme-btn.unselected {
+    background: #eee;
+    color: #333;
+    border: 2px solid #bbb;
+    opacity: 0.7;
+    filter: grayscale(0.7) brightness(0.95);
+}
+.theme-btn .showSousCatBtn {
+    margin-top: 0.7em;
+    background: #fff;
+    color: #3498db;
+    border: none;
+    border-radius: 6px;
+    padding: 0.3em 1em;
+    cursor: pointer;
+    font-size: 0.95em;
+    box-shadow: 0 1px 4px #3498db22;
+    transition: background 0.2s, color 0.2s;
+}
+.theme-btn .showSousCatBtn:hover {
+    background: #3498db;
+    color: #fff;
+}
 body {
-    font-family: Arial, sans-serif;
-    background: #f4f4f4;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
     margin: 0;
     padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 header {
     background: #2c3e50;
     color: #fff;
-    padding: 1em;
+    padding: 2em 1em 1em 1em;
     text-align: center;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.1);
 }
 main {
-    max-width: 600px;
-    margin: 2em auto;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    min-height: 100vh;
+    background: transparent;
+}
+body.dark main {
+    background: #181a20 !important;
+}
+section {
+    width: 100%;
+    max-width: 540px;
     background: #fff;
-    padding: 2em;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 2em 1.5em;
+    border-radius: 16px;
+    box-shadow: 0 6px 24px rgba(44,62,80,0.10);
+    margin-bottom: 2em;
+    text-align: center;
+}
+form#configForm {
+    background: #f8fbff;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px #3498db22;
+    padding: 1.5em;
+    margin: 0 auto 1em auto;
+    text-align: left;
+}
+form#configForm label {
+    display: inline-block;
+    margin-bottom: 0.5em;
+    font-size: 1em;
+}
+form#configForm input[type="checkbox"] {
+    accent-color: #3498db;
+    margin-right: 0.5em;
+}
+form#configForm input[type="radio"] {
+    accent-color: #2980b9;
+    margin-right: 0.5em;
+}
+form#configForm input[type="number"] {
+    width: 80px;
+    margin-left: 0.5em;
+    margin-bottom: 0.5em;
+}
+form#configForm strong {
+    color: #3498db;
 }
 button {
-    margin: 1em;
-    padding: 0.7em 1.5em;
-    font-size: 1em;
+    margin: 1em 0.5em;
+    padding: 0.7em 2em;
+    font-size: 1.1em;
     border: none;
-    border-radius: 5px;
-    background: #3498db;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #3498db 60%, #6dd5fa 100%);
     color: #fff;
     cursor: pointer;
-    transition: background 0.2s;
+    box-shadow: 0 2px 8px rgba(52,152,219,0.08);
+    transition: background 0.2s, transform 0.2s;
 }
 button:hover {
-    background: #2980b9;
+    background: linear-gradient(90deg, #2980b9 60%, #3498db 100%);
+    transform: scale(1.05);
+}
+input[type="text"], select {
+    width: 80%;
+    padding: 0.7em;
+    margin: 1em 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    font-size: 1em;
+    box-sizing: border-box;
 }
 footer {
     text-align: center;
     padding: 1em;
     background: #eee;
     color: #333;
-    position: fixed;
-    width: 100%;
-    bottom: 0;
+    box-shadow: 0 -2px 8px rgba(44,62,80,0.05);
+}
+
+/* Effet de survol sur les sous-parties (labels cliquables) */
+form#configForm label:hover,
+#sousCatDiv label:hover {
+    cursor: pointer;
+    background: #e0eafc33;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+body.dark form#configForm label:hover,
+body.dark #sousCatDiv label:hover {
+    background: #3498db33;
+}
+
+/* Effet de survol sur les menus déroulants (accordéons) */
+details > summary {
+    cursor: pointer;
+    padding: 0.3em 0.7em;
+    border-radius: 6px;
+    transition: background 0.2s;
+    font-weight: bold;
+}
+details > summary:hover {
+    background: #e0eafc33;
+}
+body.dark details > summary:hover {
+    background: #3498db33;
+}
+
+/* Thème sombre */
+body.dark {
+    background: #181a20 !important;
+    color: #e0eafc;
+}
+body.dark header {
+    background: #181a20;
+    color: #e0eafc;
+}
+body.dark section {
+    background: #23272f !important;
+    color: #e0eafc !important;
+}
+body.dark .theme-btn {
+    background: #2980b9 !important;
+    color: #fff !important;
+    border: 3px solid #6dd5fa;
+    box-shadow: 0 4px 16px #6dd5fa44;
+    opacity: 1;
+    filter: brightness(1.1);
+}
+body.dark .theme-btn.unselected {
+    background: #23272f !important;
+    color: #888 !important;
+    border: 2px solid #444;
+    opacity: 0.6;
+    filter: grayscale(0.7) brightness(0.8);
+}
+body.dark form#configForm {
+    background: #23272f;
+    color: #e0eafc;
+}
+body.dark footer {
+    background: #181a20;
+    color: #e0eafc;
+}
+body, header, section, form#configForm, footer {
+    transition: background 0.3s, color 0.3s;
 }
